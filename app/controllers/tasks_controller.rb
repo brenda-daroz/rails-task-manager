@@ -38,6 +38,13 @@ class TasksController < ApplicationController
     redirect_to tasks_path, status: :see_other
   end
 
+  def toggle
+    @task = Task.find(params[:id])
+    @task.update(completed: params[:completed])
+
+    render partial: "checkbox", locals: {task: @task}
+  end
+
   private
 
   def task_params

@@ -1,8 +1,10 @@
 <h1>Tasks</h1>
 
+<div data-controller="tasks">
 <% @tasks.each do |task| %>
-<%= check_box_tag 'done', 0, task.completed %>
+<%= render "checkbox", task: task  %>
 <%= link_to task.title, task_path(task) %>
 <% end %>
+</div>
 
 <p><%= link_to "Add new task", new_task_path %></p>
